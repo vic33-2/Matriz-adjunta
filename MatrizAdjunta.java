@@ -117,7 +117,14 @@ public class MatrizAdjunta {
         }
         return det;
     }
-
+ public static void escribirArchivo(double[][] matriz, String nombreArchivo) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(nombreArchivo))) {
+            for (double[] fila : matriz) {
+                for (double valor : fila) {
+                    bw.write(String.format("%.4f ", valor));
+                }
+                bw.newLine();
+            }
         } catch (IOException e) {
             System.out.println("Error al escribir archivo: " + e.getMessage());
         }
